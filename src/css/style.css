@@ -1,0 +1,138 @@
+body{
+    background-color: white;
+    font-family: "Jost", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+h1, h2, h3{
+    line-height: 1.2;
+}
+
+
+
+p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6em;
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.navbar{
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    font-family: "Jost", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 3px solid #FFCC00;
+}
+
+.genre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    border-bottom: 3px solid #FFCC00;
+    font-family: "Jost", sans-serif;
+}
+
+.story {
+    display: flex;
+    gap: 10px;
+}
+
+/* -------------Images------------- */
+.imageBox{
+    width: 100%;
+}
+
+.smallBox .imageBox {
+    flex: 1;
+}
+
+.smallBox .imageBox img {
+   height:140px;
+   object-fit: cover;
+}
+
+
+.smallBox .text {
+    flex: 3;
+}
+
+.exlargeImg{
+    height: 400px;
+    margin-bottom: 3px;
+}
+
+.largeImg{
+    height: 300px;
+    margin-bottom: 3px;
+}
+
+.smallImg{
+
+    object-fit: cover;
+    flex: 1;
+}
+
+.mediumImg{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+/* -------------Hover------------- */
+.imageBox,
+.exLargeBox,
+.mediumBox,
+.smallBox,
+.story {
+    transition: transform 0.4s ease;
+}
+
+
+
+.exLargeBox:hover,
+.mediumBox:hover,
+.story:hover  {
+    transform: scale(1.02);
+}
+
+.exLargeBox:hover h1,
+.mediumBox:hover h2,
+.story:hover h3 {
+    color: #FFCC00;
+}
+
+.exLargeBox:hover p,
+.mediumBox:hover p,
+.story:hover p {
+    color: black;
+}
+
+.film .exLargeBox:hover p {
+    color: white;
+}

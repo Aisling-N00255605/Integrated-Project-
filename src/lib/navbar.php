@@ -8,9 +8,13 @@ catch (Exception $e) {
     exit();
 }
 ?>
+<div class="container">
+<div class="width-12">
 <ul class="navbar">
     <li><a href="index.php">Home</a></li>
     <?php foreach ($categories as $c) { ?>
         <li><a href="category.php?id=<?= $c->id ?>"><?= $c->name ?></a></li>
     <?php } ?>
 </ul>
+</div>
+</div>

@@ -46,7 +46,7 @@ catch (Exception $e) {
 
 
 
-    <title>Newspaper PRACTICE</title>
+    <title>Newspaper</title>
 </head>
 
 <body>
@@ -103,12 +103,18 @@ catch (Exception $e) {
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
             <h2><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
-            <p>Fota Wildlife Park announced the birth of two endangered Northern cheetah cubs born to mother Florence and father Nawab. Photograph: Darragh Kane</p>
+            <p><?= $s->subheadline ?></p>
         </div>
     </div>
     <?php } ?>
 </div>
-</div>        
+</div> 
+
+<!-- -------------Banner------------- -->
+
+    <div class="width">
+        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+    </div>
 </body>
 
 </html>   

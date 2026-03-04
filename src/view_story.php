@@ -18,6 +18,13 @@ catch (Exception $e) {
     exit();
 }
 ?>
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/entertainment.css">
+
 <html>
     <head>
         <title>Story</title>
@@ -26,6 +33,25 @@ catch (Exception $e) {
         <?php require_once "./lib/navbar.php"; ?>
         <?php require_once "./lib/flash_message.php"; ?>
         <div>
+            <div class="container">
+                <div class="width-4 catLoc">
+                    <p class= "category"><?= Category::findById($s->category_id)->name?></p>
+                    <p class= "location"><?= Location::findById($s->location_id)->name ?></p>
+                </div>
+                <div class="width-12">
+                    <h1><?= $s->headline ?></h1>
+                    <p><?= $s->subheadline ?></p>
+                    <p class="viewImg"><img src="<?= $s->img_url ?>" /></p>
+                    <p class="shortHeadline"><?= $s->short_headline ?></p>
+                    <?php $author = Author::findById($s->author_id); ?>
+                    <p class="author">By <?= $author->first_name . " " . $author->last_name ?></p>
+                    <p class="published">Published <?= $s->created_at ?></p>
+                    <p><?= $s->article ?></p>
+                </div>
+            </div>
+
+
+
             <h1><?= $s->headline ?></h1>
             <h3><?= $s->subheadline ?></h3>
             <div>

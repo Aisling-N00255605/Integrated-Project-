@@ -108,6 +108,16 @@ h4 {
     flex: 2;
 }
 
+/* ____Category Img____ */
+.categoryBox .imageBox{
+    flex: 1;
+    height: 200px;
+}
+
+.categoryBox .text{
+    flex: 2;
+}
+
 /* -------------Hover------------- */
 /* .imageBox,
 .exLargeBox,
@@ -189,4 +199,72 @@ h4 {
 
 .mediumBox p{
     color: rgb(109, 106, 106);
+}
+
+/* -------------Banner------------- */
+.width{
+    width: 100%;
+    height: 6px;
+}
+
+/* -------------Category Story------------- */
+.categoryBox p.author{
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: gray;
+    text-transform: uppercase;
+    padding-bottom: 1px;
+    border-bottom: 3px solid #FFCC00;
+}
+
+.categoryBox{
+    display: flex;
+    flex-direction: column;
+}
+
+/* -------------View Story------------- */
+.catLoc{
+    display: flex;
+    gap: 10px;
+}
+
+.category{
+    border: 2px solid rgb(36, 36, 36);
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+}
+
+.Location{
+    border: 2px solid rgb(36, 36, 36);
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+}
+.viewImg{
+    margin-bottom: 0px;
+}
+
+.shortHeadline{
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: gray;
+}
+
+.author{
+    font-family: "Space Mono", monospace;
+    font-size: 14px;
+    color: rgb(70, 69, 69);
+    margin-bottom: 0px;
+}
+
+.published{
+    font-family: "Space Mono", monospace;
+    font-size: 14px;
+    color: rgb(70, 69, 69);
+    border-bottom: 3px solid #FFCC00;
 }

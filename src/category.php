@@ -11,7 +11,7 @@ try {
         throw new Exception("Category not found.");
     }
     // $stories = Story::findByCategory($categoryId);
-    $stories = Story::findByCategory($categoryId, $options = array('limit' => 3));
+    $stories = Story::findByCategory($categoryId, $options = array('limit' => 12));
     // $stories = Story::findByCategory($categoryId, $options = array('limit' => 3, 'offset' => 2));
 }
 catch (Exception $e) {
@@ -19,29 +19,41 @@ catch (Exception $e) {
     exit();
 }
 ?>
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/entertainment.css">
+
 <html>
     <head>
-        <title>Stories: <?= $category->name ?></title>
+
+        <title><?= $category->name ?></title>
     </head>
     <body>
         <?php require_once "./lib/navbar.php"; ?>
         <?php require_once "./lib/flash_message.php"; ?>
-        <h1>Stories: <?= $category->name ?></h1>
-        <?php foreach ($stories as $s) { ?>
-        <div>
-            <h2><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline ?></a></h2>
-            <h3><?= $s->subheadline ?></h3>
-            <div>
-            <p><?= $s->article ?></p>
-            </div>
-            <p><img src="<?= $s->img_url ?>" /></p>
+
+<div class="container">
+    <div class="width-12">
+        <h4 class="genre"><?= $category->name ?></h4>
+    </div>
+
+    <?php foreach ($stories as $s) { ?>
+    <div class="width-3 categoryBox">
+        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div> 
+        <div class="text">
+        <!-- author -->
             <?php $author = Author::findById($s->author_id); ?>
-            <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
-            <p>Category: <?= Category::findById($s->category_id)->name ?></p>
-            <p>Location: <?= Location::findById($s->location_id)->name ?></p>
-            <p>Date created: <?= $s->created_at ?></p>
-            <p>Last modified: <?= $s->updated_at ?></p>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?> <?= Category::findById($s->category_id)->name ?></p>
+        <!-- Heading -->
+            <h2><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
+        <!-- pargraph -->
+            <p><?= $s->subheadline ?></p>
         </div>
-        <?php } ?>
+    </div>
+    <?php } ?>
+</div>
     </body>
 </html>

@@ -22,8 +22,7 @@ catch (Exception $e) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/entertainment.css">
+    <link rel="stylesheet" href="css/main.css">
 
 <html>
     <head>
@@ -49,21 +48,6 @@ catch (Exception $e) {
                     <p><?= $s->article ?></p>
                 </div>
             </div>
-
-
-
-            <h1><?= $s->headline ?></h1>
-            <h3><?= $s->subheadline ?></h3>
-            <div>
-            <p><?= $s->article ?></p>
-            </div>
-            <p><img src="<?= $s->img_url ?>" /></p>
-            <?php $author = Author::findById($s->author_id); ?>
-            <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
-            <p>Category: <?= Category::findById($s->category_id)->name ?></p>
-            <p>Location: <?= Location::findById($s->location_id)->name ?></p>
-            <p>Date created: <?= $s->created_at ?></p>
-            <p>Last modified: <?= $s->updated_at ?></p>
         </div>
         <div>
             <h2>Related Stories</h2>

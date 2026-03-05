@@ -23,12 +23,10 @@ catch (Exception $e) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/entertainment.css">
+    <link rel="stylesheet" href="css/main.css">
 
 <html>
     <head>
-
         <title><?= $category->name ?></title>
     </head>
     <body>
@@ -41,7 +39,7 @@ catch (Exception $e) {
     </div>
 
     <?php foreach ($stories as $s) { ?>
-    <div class="width-3 categoryBox">
+    <div class="width-3 mediumBox">
         <div class="imageBox"><img src="<?= $s->img_url ?>" /></div> 
         <div class="text">
         <!-- author -->

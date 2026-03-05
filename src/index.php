@@ -5,6 +5,10 @@ try {
     $trending = Story::findAll($options = array('limit' => 4, 'offset' => 4));
     $wildLifecategoryId = 1;
     $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4));
+    $tophistorycategoryId = 2;
+    $TopHistory = Story::findByCategory($tophistorycategoryId, $options = array('limit' => 1, 'offset' => 1));
+    $historycategoryId = 2;
+    $History = Story::findByCategory($historycategoryId, $options = array('limit' => 4, 'offset' => 2));
     }
 catch (Exception $e) {
     echo $e->getMessage();
@@ -41,8 +45,8 @@ catch (Exception $e) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/entertainment.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/main.css">
 
 
 
@@ -110,11 +114,50 @@ catch (Exception $e) {
 </div>
 </div> 
 
-<!-- -------------Banner------------- -->
+<!-- -------------History------------- -->
+ <div class="blackBackground">
+<div class="container historySection">
 
-    <div class="width">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+<div class="width-12">
+        <h4 class="genre">History</h4>
     </div>
+<!-- -------------Extra Large Story------------- -->
+    
+        <?php foreach ($TopHistory as $s) { ?>
+   <div class="width-8 exLargeBox">
+        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
+    </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+ <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+<div class="smallBox">
+   
+ <?php foreach ($History as $s) { ?>
+    <div class="story">
+        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+        </div>
+    </div>
+  <?php } ?>
+ </div>  
+</div>
+</div>
+</div>
+<!-- -------------Culture------------- -->
+
+
 </body>
 
 </html>   

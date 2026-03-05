@@ -44,35 +44,61 @@ h4 {
     text-align: center;
 }
 
-.navbar{
-    display: flex;
-    gap: 60px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    font-family: "Jost", sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    border-bottom: 3px solid #FFCC00;
-    margin-bottom: 30px;
+p.author{
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+    color: gray;
+    text-transform: uppercase;
+    padding-bottom: 1px;
+    border-bottom: 3px solid #b2c9af;
 }
 
 .genre{
     margin-top: 30px;
     margin-bottom: 10px;
-    border-bottom: 3px solid #FFCC00;
-    border-top: 3px solid #FFCC00;
+    border-bottom: 3px solid #b2c9af;
+    border-top: 3px solid #b2c9af;
 }
 
 .title{
     margin-bottom: 12px;
-    border-bottom: 3px solid #FFCC00;
-    border-top: 3px solid #FFCC00;
+    border-bottom: 3px solid #b2c9af;
+    border-top: 3px solid #b2c9af;
 }
 
 .story {
     display: flex;
     gap: 10px;
+}
+
+/* -------------NavBar------------- */
+.navBarBackground{
+    background-color: #c0c7bf;
+    margin-bottom: 30px;
+}
+
+.navbar{
+    gap: 20px;
+    display: flex;
+    font-family: "Jost", sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.navbar input[type=text] {
+  float: right;
+  padding: 3px;
+  padding-left: 9px;
+  border-radius: 30px;
+  font-size: 17px;
+}
+
+.pageLinks{
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
 }
 
 /* -------------Images------------- */
@@ -108,68 +134,13 @@ h4 {
     flex: 2;
 }
 
-/* ____Category Img____ */
-.categoryBox .imageBox{
-    flex: 1;
-    height: 200px;
-}
-
-.categoryBox .text{
-    flex: 2;
-}
-
-/* -------------Hover------------- */
-/* .imageBox,
-.exLargeBox,
-.mediumBox,
-.smallBox,
-.story {
-    transition: transform 0.4s ease;
-}
-
-
-
-.exLargeBox:hover,
-.mediumBox:hover,
-.story:hover  {
-    transform: scale(1.02);
-}
-
-.exLargeBox:hover h1,
-.mediumBox:hover h2,
-.story:hover h3 {
-    color: #FFCC00;
-}
-
-.exLargeBox:hover p,
-.mediumBox:hover p,
-.story:hover p {
-    color: black;
-}
-
-.film .exLargeBox:hover p {
-    color: white;
-} */
 
 /* -------------Extra Large Box------------- */
 
-.exLargeBox p.author{
-    font-family: "Space Mono", monospace;
-    font-size: 10px;
-    color: gray;
-    text-transform: uppercase;
-    padding-bottom: 1px;
-    border-bottom: 3px solid #FFCC00;
-}
 
 /* -------------Small Story------------- */
 .smallBox p.author{
-    font-family: "Space Mono", monospace;
-    font-size: 10px;
-    color: gray;
-    text-transform: uppercase;
-    padding-bottom: 1px;
-    border-bottom: 1.8px solid #FFCC00;
+    border-bottom: 1.8px solid #b2c9af;
 }
 
 .smallBox h3{
@@ -184,14 +155,6 @@ h4 {
 }
 
 /* -------------Medium Story------------- */
-.mediumBox p.author{
-    font-family: "Space Mono", monospace;
-    font-size: 12px;
-    color: gray;
-    text-transform: uppercase;
-    padding-bottom: 1px;
-    border-bottom: 3px solid #FFCC00;
-}
 
 .mediumBox h2{
     text-transform: uppercase;
@@ -201,26 +164,20 @@ h4 {
     color: rgb(109, 106, 106);
 }
 
-/* -------------Banner------------- */
-.width{
-    width: 100%;
-    height: 6px;
+/* -------------Black Background------------- */
+.blackBackground{
+    background-color: black;
 }
 
-/* -------------Category Story------------- */
-.categoryBox p.author{
-    font-family: "Space Mono", monospace;
-    font-size: 12px;
-    color: gray;
-    text-transform: uppercase;
-    padding-bottom: 1px;
-    border-bottom: 3px solid #FFCC00;
+.historySection{
+    color: white;
+    padding: 20px;
 }
 
-.categoryBox{
-    display: flex;
-    flex-direction: column;
+.historySection p.author{
+    color: rgb(192, 190, 190);
 }
+
 
 /* -------------View Story------------- */
 .catLoc{
@@ -266,5 +223,5 @@ h4 {
     font-family: "Space Mono", monospace;
     font-size: 14px;
     color: rgb(70, 69, 69);
-    border-bottom: 3px solid #FFCC00;
+    border-bottom: 3px solid #b2c9af;
 }

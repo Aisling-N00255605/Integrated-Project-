@@ -21,6 +21,12 @@ try {
         'headline'    => $_POST['headline'] ?? '',
         'article'     => $_POST['article'] ?? '',
         'category_id' => $_POST['category_id'] ?? '',
+
+        'short_headline' => $_POST['short_headline'] ?? '',
+        'subheadline' => $_POST['subheadline'] ?? '',
+        'author_id' => $_POST['author_id'] ?? '',
+        'location_id' => $_POST['location_id'] ?? '',
+        'img_url' => $_POST['img_url'] ?? '',
         // TODO: Add the rest of your form fields here
     ];
 
@@ -29,6 +35,12 @@ try {
         'headline'    => 'required|notempty|min:5|max:255',
         'article'     => 'required|notempty|min:20',
         'category_id' => 'required|integer',
+
+        'short_headline'    => 'required|notempty|min:10|max:255',
+        'subheadline'     => 'required|notempty|min:10|max:255',
+        'author_id' => 'required|integer',
+        'location_id'    => 'required|integer',
+        'img_url'     => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880',
         // TODO: Add validation rules for the rest of your fields
     ];
 
@@ -40,19 +52,24 @@ try {
         throw new Exception('Validation failed.');
     }
 
+      $uploader = new ImageUpload();
+    $imageFilename = $uploader -> process($_FILES["image"]);
+
+    if (!$imageFilename){
+        throw new Exception("Failed to process and save image");
+}
+
     // Save the story
-    $story = new Story();
-    $story->headline = $data['headline'];
-    $story->category_id = $data['category_id'];
-    $story->article = $data['article'];
-    
-    // TODO: Set the rest of the story properties from $data
-    // For now, these are set to placeholder values for the additional fields
-    $story->short_headline = 'Sample short headline';
-    $story->subheadline = 'Sample subheadline';
-    $story->author_id = 1;
-    $story->location_id = 1;
-    $story->img_url = 'images/placeholder.jpg';
+    $story = new Story($data);
+    // $story->headline = $data['headline'];
+    // $story->category_id = $data['category_id'];
+    // $story->article = $data['article'];
+
+    // $story->short_headline = $data['short_headline'];
+    // $story->subheadline = $data['subheadline'];
+    // $story->author_id = 1;
+    // $story->location_id = 1;
+    // $story->img_url = 'images/placeholder.jpg';
     
     $story->save();
 
@@ -75,4 +92,5 @@ try {
 
     // Redirect back to the form page
     redirect('story_create.php');
+    // print_r($errors);
 }

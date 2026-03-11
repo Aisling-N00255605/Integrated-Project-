@@ -58,7 +58,13 @@ class ImageUpload {
         return isset($_FILES[$key]) && $_FILES[$key]['error'] === UPLOAD_ERR_OK;
     }
 
-    public function deleteImage($filename) {
+    public function deleteImage($fileReference) {
+        if (empty($fileReference)) {
+            return true;
+        }
+
+        // Accept either a filename ("abc.jpg") or a relative path ("images/abc.jpg")
+        $filename = basename(parse_url($fileReference, PHP_URL_PATH));
         if (empty($filename)) {
             return true;
         }
@@ -73,7 +79,7 @@ class ImageUpload {
 
     private function generateUniqueFilename($extension) {
         do {
-            $filename = uniqid('game_', true) . '.' . $extension;
+            $filename = uniqid('image_', true) . '.' . $extension;
             $filePath = $this->targetDir . $filename;
         } while (file_exists($filePath));
 
@@ -87,6 +93,11 @@ class ImageUpload {
                 return 'jpg';
             case 'image/png':
                 return 'png';
+            case 'image/webp':
+                return 'webp';
+            case 'image/avif':
+            case 'image/x-avif':
+                return 'avif';
             default:
                 return 'jpg';
         }

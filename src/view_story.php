@@ -40,15 +40,21 @@ catch (Exception $e) {
                 <div class="width-12">
                     <h1><?= $s->headline ?></h1>
                     <p><?= $s->subheadline ?></p>
-                    <p class="viewImg"><img src="<?= $s->img_url ?>" /></p>
+                    <p class="viewImg"><img src="images/<?= $s->img_url ?>" /></p>
                     <p class="shortHeadline"><?= $s->short_headline ?></p>
                     <?php $author = Author::findById($s->author_id); ?>
                     <p class="author">By <?= $author->first_name . " " . $author->last_name ?></p>
                     <p class="published">Published <?= $s->created_at ?></p>
                     <p><?= $s->article ?></p>
+
+                    <div class="actions">
+                        <li><a href="story_edit.php">Edit</a></li>
+                        <li><a href="story_delete.php">Delete</a></li>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div>
             <h2>Related Stories</h2>
             <?php foreach ($related_stories as $rs) { ?>

@@ -6,15 +6,48 @@ require_once './lib/session.php';
 startSession();
 
 try {
-    $categories = Category::findAll();
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        throw new Exception('Invalid request method.');
+    }
+    // if (!array_key_exists('id', $_GET)) {
+    //     throw new Exception('No story ID provided.');
+    // }
+    // $id = $_GET['id'];
+
+    // $story = Story::findById($id);
+    // if ($story === null) {
+    //     throw new Exception("story not found.");
+    // }
+
     $authors = Author::findAll();
+    $categories = Category::findAll();
     $locations = Location::findAll();
 
-} catch (Exception $e) {
-    echo $e->getMessage();
-    exit();
-}
+    $category = Category::findById($story->category_id);
+    // $storycategoryIds = [];
+    // foreach ($category as $storycategory) {
+    // $storycategoryIds[] = $category->id;
+    // }
+
+    $author = Author::findById($story->author_id);
+    $storyauthorIds = [];
+    foreach ($author as $storyauthor) {
+    $storyauthorIds[] = $author->id;
+    }
+
+    $location = Location::findById($story->location_id);
+    $storylocationIds = [];
+    foreach ($location as $storylocation) {
+    $storylocationIds[] = $location->id;
+    }
+    
+}catch (PDOException $e) {
+        setFlashMessage('error', 'Error: ' . $e->getMessage());
+        redirect('index.php');
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,21 +59,24 @@ try {
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <title>Create Story</title>
+    <title>Edit Story</title>
 </head>
 <body>
     <?php require_once "./lib/navbar.php"; ?>
     <?php require_once "./lib/flash_message.php"; ?>
 
-    <form action="story_store.php" method="POST" enctype="multipart/form-data">
-    <!-- -------------Headline------------- -->
+    <form action="story_update.php" method="POST" enctype="multipart/form-data">
+    
     <div class="container">
     <div class="width-6">
-        <h1>Create Story</h1>
+        <h1>Edit Story</h1>
+
+      <!-- -------------Headline------------- -->  
         <div class="input">
             <label for="headline">Headline:</label>
             <div>
-                <input type="text" id="headline" name="headline" value="<?= old('headline') ?>" required>
+                <input type="text" id="headline" name="headline" 
+                value="<?= old('headline') ?? $story->headline ?>" required>
                 <p class="error"><?= error('headline') ?></p>
             </div>
         </div>
@@ -49,7 +85,8 @@ try {
         <div class="input">
             <label for="short_headline">Short_headline:</label>
             <div>
-                <input type="text" id="short_headline" name="short_headline" value="<?= old('short_headline') ?>" required>
+                <input type="text" id="short_headline" name="short_headline" 
+                value="<?= old('short_headline') ?? $story->short_headline ?>" required>
                 <p class="error"><?= error('short_headline') ?></p>
             </div>
         </div>
@@ -58,7 +95,8 @@ try {
         <div class="input">
             <label for="subheadline">Subheadline:</label>
             <div>
-                <input type="text" id="subheadline" name="subheadline" value="<?= old('subheadline') ?>" required>
+                <input type="text" id="subheadline" name="subheadline" 
+                value="<?= old('subheadline') ?? $story->subheadline ?>" required>
                 <p class="error"><?= error('subheadline') ?></p>
             </div>
         </div>
@@ -69,7 +107,8 @@ try {
             <div>
                 <select name="author_id" id="author_id">
                     <?php foreach ($authors  as $author) { ?>
-                        <option value="<?= $author->id ?>" <?= chosen('author_id', $author->id) ? 'selected' : '' ?>><?= $author->first_name . " " . $author -> last_name ?></option>
+                        <option value="<?= $author->id ?>" 
+                        <?= ($author->id == ($story->author_id)) ? 'selected' : '' ?>></option>
                     <?php } ?>
                 </select>
                 <p class="error"><?= error('author_id') ?></p>
@@ -106,7 +145,7 @@ try {
         <div class="input">
             <label for="article">Article:</label>
             <div>
-                <textarea name="article" id="article" required><?= old('article') ?></textarea>
+                <textarea name="article" id="article"><?= old('article') ?? $story->article ?></textarea>
                 <p class="error"><?= error('article') ?></p>
             </div>
         </div>
@@ -118,7 +157,7 @@ try {
         </div>
 
         <!-- -------------Button------------- -->
-        <button type="submit">Create Story</button>
+        <button type="submit">Update Story</button>
         </div>
         </div>
     </form>

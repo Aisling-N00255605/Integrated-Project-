@@ -40,7 +40,7 @@ catch (Exception $e) {
 
     <?php foreach ($stories as $s) { ?>
     <div class="width-3 mediumBox">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div> 
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
         <div class="text">
         <!-- author -->
             <?php $author = Author::findById($s->author_id); ?>

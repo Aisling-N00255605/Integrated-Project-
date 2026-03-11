@@ -45,7 +45,6 @@ catch (Exception $e) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/main.css">
 
 
@@ -64,7 +63,7 @@ catch (Exception $e) {
     
         <?php foreach ($top as $s) { ?>
    <div class="width-8 exLargeBox">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -82,7 +81,7 @@ catch (Exception $e) {
    
  <?php foreach ($trending as $s) { ?>
     <div class="story">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -102,7 +101,7 @@ catch (Exception $e) {
 
     <?php foreach ($WildLife as $s) { ?>
     <div class="width-3 mediumBox">        
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div> 
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -125,7 +124,7 @@ catch (Exception $e) {
     
         <?php foreach ($TopHistory as $s) { ?>
    <div class="width-8 exLargeBox">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -143,7 +142,7 @@ catch (Exception $e) {
    
  <?php foreach ($History as $s) { ?>
     <div class="story">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>

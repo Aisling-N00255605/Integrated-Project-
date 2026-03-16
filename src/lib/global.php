@@ -50,4 +50,11 @@ function redirect($url) {
     header("Location: $url");
     exit();
 }
+
+function h($string) {
+    if ($string === null) {
+        return '';
+    }
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
 ?>

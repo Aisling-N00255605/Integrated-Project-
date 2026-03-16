@@ -48,8 +48,8 @@ catch (Exception $e) {
                     <p><?= $s->article ?></p>
 
                     <div class="actions">
-                        <li><a href="story_edit.php">Edit</a></li>
-                        <li><a href="story_delete.php">Delete</a></li>
+                        <li><a href="story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+                        <li><a href="story_delete.php?id=<?= $s->id ?>">Delete</a></li>
                     </div>
                 </div>
             </div>

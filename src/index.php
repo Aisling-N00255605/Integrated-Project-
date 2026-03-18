@@ -1,14 +1,26 @@
 <?php
 require_once "./lib/config.php";
 try {
-    $top = Story::findAll($options = array('limit' => 1, 'offset' => 1));
+    $top = Story::findAll($options = array('limit' => 1, 'offset' => 1, 'order_by' => 'created_at', 'order'=> 'DESC' ));
     $trending = Story::findAll($options = array('limit' => 4, 'offset' => 4));
+    
     $wildLifecategoryId = 1;
-    $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4));
+    $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4, 'order_by' => 'created_at', 'order'=> 'DESC' ));
+   
     $tophistorycategoryId = 2;
     $TopHistory = Story::findByCategory($tophistorycategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
     $historycategoryId = 2;
     $History = Story::findByCategory($historycategoryId, $options = array('limit' => 4, 'offset' => 2));
+    
+    $NatureBannerId = 3;
+    $NatureBanner = Story::findByCategory($NatureBannerId, $options = array('limit' => 1));
+    
+    $topnaturecategoryId = 3;
+    $TopNature = Story::findByCategory($topnaturecategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $naturecategoryId = 3;
+    $Nature = Story::findByCategory($naturecategoryId, $options = array('limit' => 4, 'offset' => 2));
     }
 catch (Exception $e) {
     echo $e->getMessage();
@@ -115,7 +127,7 @@ catch (Exception $e) {
 
 <!-- -------------History------------- -->
  <div class="blackBackground">
-<div class="container historySection">
+<div class="container darkModeSection">
 
 <div class="width-12">
         <h4 class="genre">History</h4>
@@ -154,7 +166,56 @@ catch (Exception $e) {
 </div>
 </div>
 </div>
-<!-- -------------Culture------------- -->
+
+
+<!-- -------------Nature------------- -->
+ <div class="blackBackground">
+
+    <?php foreach ($NatureBanner as $s) { ?>
+   <div class="banner">
+        <div class="imageBanner"><img src="images/<?= $s->img_url ?>" /></div>
+    </div>
+  <?php } ?>
+
+<div class="container darkModeSection">
+<div class="width-12">
+        <h4 class="genre">Nature</h4>
+    </div>
+<!-- -------------Extra Large Story------------- -->
+    
+        <?php foreach ($TopNature as $s) { ?>
+   <div class="width-8 exLargeBox">
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
+    </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+ <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+<div class="smallBox">
+   
+ <?php foreach ($Nature as $s) { ?>
+    <div class="story">
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+        </div>
+    </div>
+  <?php } ?>
+ </div>  
+</div>
+</div>
+</div>
+
 
 
 </body>

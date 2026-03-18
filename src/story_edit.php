@@ -6,25 +6,45 @@ require_once './lib/session.php';
 startSession();
 
 try {
+    $data = [];
+    $errors = [];
+    
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         throw new Exception('Invalid request method.');
     }
 
-try{
+    $data = [
+        'id' => $_GET['id'] ?? null
+    ];
+
+    $rules = [
+        'id' => 'required|integer'
+    ];
+
+    $validator = new Validator($data, $rules);
+
+    if ($validator->fails()) {
+        foreach ($validator->errors() as $field => $fieldErrors) {
+            $errors[$field] = $fieldErrors[0];
+        }
+        throw new Exception('Validation failed.');
+    }
+    
+
     $story = Story::findById($_GET["id"]);
-
-    // $author = Author::findById($story->author_id);
-    // $category = Category::findById($story->category_id);
-    // $location = Location::findById($story->location_id);
-
     $categories = Category::findAll();
     $locations = Location::findAll();
     $authors = Author::findAll();
-} 
-catch (Exception $e) {
-    echo $e->getMessage();
-    exit();
-}
+
+if (!$story) {
+        throw new Exception('article not found.');
+    }
+
+
+// catch (Exception $e) {
+//     echo $e->getMessage();
+//     exit();
+// }
 
     
 }catch (PDOException $e) {
@@ -52,6 +72,7 @@ catch (Exception $e) {
     <?php require_once "./lib/flash_message.php"; ?>
 
     <form action="story_update.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $story->id ?>">
     
 <div class="container">
 <div class="width-6">

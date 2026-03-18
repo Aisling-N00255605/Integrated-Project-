@@ -14,6 +14,7 @@ try {
     }
 
     $data = [
+        'id' => $_POST['id'] ?? null,
         'headline'    => $_POST['headline'] ?? '',
         'article'     => $_POST['article'] ?? '',
         'category_id' => $_POST['category_id'] ?? '',
@@ -50,41 +51,34 @@ try {
     // Handle cover image
     $imageFilename = null;
     $uploader = new ImageUpload();
-    if ($uploader->hasFile('article cover')) {
+    if ($uploader->hasFile('image')) {
         if ($story->imageFilename) {
             $uploader->deleteImage($story->imageFilename);
         }
-        $imageFilename = $uploader->process($_FILES['article cover']);
+        $imageFilename = $uploader->process($_FILES['image']);
         if (!$imageFilename) throw new Exception('Failed to save article cover image.');
     }
 
     // Update book properties
-    $book->headline = $data['headline'];
-    $book->article = $data['article'];
-    $book->category_id = $data['category_id'];
-    $book->short_headline = $data['short_headline'];
-    $book->subheadline = $data['subheadline'];
-    $book->author_id = $data['author_id'];
-    $book->location_id = $data['location_id'];
-    // if ($imageFilename) $book->cover_filename = $imageFilename;
+    $story->headline = $data['headline'];
+    $story->article = $data['article'];
+    $story->category_id = $data['category_id'];
+    $story->short_headline = $data['short_headline'];
+    $story->subheadline = $data['subheadline'];
+    $story->author_id = $data['author_id'];
+    $story->location_id = $data['location_id'];
+    if ($imageFilename) {
+    $story->imageFilename = $imageFilename;
+}
 
-    $story->save()
-
-
-    // BookFormat::deleteByBook($book->id);
-    // // Create new platform associations
-    // if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
-    //     foreach ($data['format_ids'] as $formatids) {
-    //         BookFormat::create($book->id, $formatids);
-    //     }
-    // }
-
-    // Clear old form data/errors
-    clearFormData();
-    clearFormErrors();
-
+    $story->save();
     setFlashMessage('success', 'Story edited successfully!');
     redirect('view_story.php?id=' . $story->id);
+    // clearFormData();
+    // clearFormErrors();
+
+    // setFlashMessage('success', 'Story edited successfully!');
+    // redirect('view_story.php?id=' . $story->id);
 
 } catch (Exception $e) {
     // Delete uploaded cover if something failed

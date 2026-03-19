@@ -14,7 +14,7 @@ try {
     $History = Story::findByCategory($historycategoryId, $options = array('limit' => 4, 'offset' => 2));
     
     $NatureBannerId = 3;
-    $NatureBanner = Story::findByCategory($NatureBannerId, $options = array('limit' => 1));
+    $NatureBanner = Story::findByCategory($NatureBannerId, $options = array('limit' => 4));
     
     $topnaturecategoryId = 3;
     $TopNature = Story::findByCategory($topnaturecategoryId, $options = array('limit' => 1, 'offset' => 1));
@@ -170,20 +170,33 @@ catch (Exception $e) {
 
 <!-- -------------Nature------------- -->
  <div class="blackBackground">
+    <div class="container">
 
+<!-- <div class="slideshow-container">
     <?php foreach ($NatureBanner as $s) { ?>
-   <div class="banner">
-        <div class="imageBanner"><img src="images/<?= $s->img_url ?>" /></div>
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <div class="imageBox">
+            <img src="images/<?= $s->img_url ?>">
+        </div>
+        <div class="text">
+            <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
     </div>
-  <?php } ?>
+    <?php } ?>
+ </div>
+</div> -->
+
 
 <div class="container darkModeSection">
 <div class="width-12">
         <h4 class="genre">Nature</h4>
     </div>
+
+
 <!-- -------------Extra Large Story------------- -->
     
-        <?php foreach ($TopNature as $s) { ?>
+        <!-- <?php foreach ($TopNature as $s) { ?>
    <div class="width-8 exLargeBox">
         <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
@@ -192,11 +205,11 @@ catch (Exception $e) {
             <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
         </div>
     </div>
-  <?php } ?>
+  <?php } ?> -->
    
 
 <!-- -------------Small Story------------- -->
- <div class="width-4">
+ <!-- <div class="width-4">
         <h4 class="title">Trending</h4>
 
 <div class="smallBox">
@@ -214,7 +227,7 @@ catch (Exception $e) {
  </div>  
 </div>
 </div>
-</div>
+</div> -->
 
 
 

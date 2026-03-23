@@ -1,14 +1,26 @@
 <?php
 require_once "./lib/config.php";
 try {
-    $top = Story::findAll($options = array('limit' => 1, 'offset' => 1));
+    $top = Story::findAll($options = array('limit' => 1, 'offset' => 1, 'order_by' => 'created_at', 'order'=> 'DESC' ));
     $trending = Story::findAll($options = array('limit' => 4, 'offset' => 4));
+    
     $wildLifecategoryId = 1;
-    $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4));
+    $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4, 'order_by' => 'created_at', 'order'=> 'DESC' ));
+   
     $tophistorycategoryId = 2;
     $TopHistory = Story::findByCategory($tophistorycategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
     $historycategoryId = 2;
     $History = Story::findByCategory($historycategoryId, $options = array('limit' => 4, 'offset' => 2));
+    
+    $NatureBannerId = 3;
+    $NatureBanner = Story::findByCategory($NatureBannerId, $options = array('limit' => 4));
+    
+    $topnaturecategoryId = 3;
+    $TopNature = Story::findByCategory($topnaturecategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $naturecategoryId = 3;
+    $Nature = Story::findByCategory($naturecategoryId, $options = array('limit' => 4, 'offset' => 2));
     }
 catch (Exception $e) {
     echo $e->getMessage();
@@ -45,7 +57,6 @@ catch (Exception $e) {
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/main.css">
 
 
@@ -64,7 +75,7 @@ catch (Exception $e) {
     
         <?php foreach ($top as $s) { ?>
    <div class="width-8 exLargeBox">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -82,7 +93,7 @@ catch (Exception $e) {
    
  <?php foreach ($trending as $s) { ?>
     <div class="story">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -102,7 +113,7 @@ catch (Exception $e) {
 
     <?php foreach ($WildLife as $s) { ?>
     <div class="width-3 mediumBox">        
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div> 
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
         <div class="text">
             <?php $author = Author::findById($s->author_id); ?>
             <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
@@ -114,48 +125,98 @@ catch (Exception $e) {
 </div>
 </div> 
 
-<!-- -------------History------------- -->
- <div class="blackBackground">
-<div class="container historySection">
+<!-- ~~~~~~~~~~~~~~~~History~~~~~~~~~~~~~~~~ -->
+<div class="blackBackground">
+<div class="container darkModeSection">
 
-<div class="width-12">
+    <div class="width-12">
         <h4 class="genre">History</h4>
     </div>
 <!-- -------------Extra Large Story------------- -->
     
-        <?php foreach ($TopHistory as $s) { ?>
-   <div class="width-8 exLargeBox">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
-        <div class="text">
-            <?php $author = Author::findById($s->author_id); ?>
-            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
-            <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+    <?php foreach ($TopHistory as $s) { ?>
+        <div class="width-8 exLargeBox">
+                <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+                <div class="text">
+                    <?php $author = Author::findById($s->author_id); ?>
+                    <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+                    <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+                </div>
         </div>
-    </div>
   <?php } ?>
    
 
 <!-- -------------Small Story------------- -->
- <div class="width-4">
+    <div class="width-4">
         <h4 class="title">Trending</h4>
 
-<div class="smallBox">
+    <div class="smallBox">
    
- <?php foreach ($History as $s) { ?>
-    <div class="story">
-        <div class="imageBox"><img src="<?= $s->img_url ?>" /></div>
-        <div class="text">
-            <?php $author = Author::findById($s->author_id); ?>
-            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
-            <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+    <?php foreach ($History as $s) { ?>
+        <div class="story">
+            <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+            <div class="text">
+                <?php $author = Author::findById($s->author_id); ?>
+                <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+                <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+            </div>
         </div>
+    <?php } ?>
+    </div>  
     </div>
-  <?php } ?>
- </div>  
+
 </div>
 </div>
+<!-- ~~~~~~~~~~~~~~~~End of History~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~Nature~~~~~~~~~~~~~~~~ -->
+<div class="blackBackground">
+<div class="container darkModeSection">
+
+    <div class="width-12">
+        <h4 class="genre">Nature</h4>
+    </div>
 </div>
-<!-- -------------Culture------------- -->
+        <div class="slideshow">
+        <?php foreach ($NatureBanner as $s) { ?>
+            <span class="dot"></span>
+            <div class="mySlides">
+                <div class="slidesImages">
+                    <img src="images/<?= $s->img_url ?>" />
+                </div>
+                <div class="text">
+                    <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+                </div>
+            </div> 
+        <?php } ?>
+        </div>
+
+<!-- -------------Java Script Slideshow------------- -->
+        <script>
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000);
+            }
+        </script>
+    
+</div>
+<!-- ~~~~~~~~~~~~~~~~End of Nature~~~~~~~~~~~~~~~~ -->
+
 
 
 </body>

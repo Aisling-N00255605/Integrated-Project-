@@ -24,5 +24,6 @@ catch (Exception $e) {
         </div>
     </ul>
 </div>
+<h1 class ="title">Name</h1>
 </div>
 </div>

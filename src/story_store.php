@@ -24,6 +24,48 @@ try {
         'location_id' => $_POST['location_id'] ?? '',
     ];
 
+    // AUTHOR
+    if ($data['author_id'] === 'new') {
+        $newAuthor = $_POST['new_author_name'] ?? '';
+
+        if (!empty($newAuthor)) {
+            $parts = explode(' ', $newAuthor, 2);
+
+            $author = new Author();
+            $author->first_name = $parts[0];
+            $author->last_name = $parts[1] ?? '';
+            $author->save();
+
+            $data['author_id'] = $author->id; 
+        }
+    }
+
+    // CATEGORY
+    if ($data['category_id'] === 'new') {
+        $newCategory = $_POST['new_category_name'] ?? '';
+
+        if (!empty($newCategory)) {
+            $cat = new Category();
+            $cat->name = $newCategory;
+            $cat->save();
+
+            $data['category_id'] = $cat->id;
+        }
+    }
+
+    // LOCATION
+    if ($data['location_id'] === 'new') {
+        $newLocation = $_POST['new_location_name'] ?? '';
+
+        if (!empty($newLocation)) {
+            $loc = new Location();
+            $loc->name = $newLocation;
+            $loc->save();
+
+            $data['location_id'] = $loc->id;
+        }
+    }
+
     $rules = [
         'headline'    => 'required|notempty|min:5|max:255',
         'article'     => 'required|notempty|min:20',

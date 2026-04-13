@@ -133,10 +133,22 @@ p.author{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #a6b6a4;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+}
+
+.subDropBtn{
+     background-color: #a6b6a4;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.subDropBtn:hover {
+  background-color: #cfd9cc;
 }
 
 /* Links inside the dropdown */
@@ -153,6 +165,22 @@ p.author{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+/* -------------locations filter------------- */
+
+.toplocation{
+    display: flex;
+    font-family: "Space Mono", monospace;
+    color: gray;
+    text-transform: uppercase;
+    padding-top: 2px;
+    gap: 50px;
+    justify-content: center; 
+    border-bottom: 3px solid #b2c9af;
+}
+
+.locationfilter{
+    font-size: 10px;
+}
 /* -------------Admin------------- */
 .adminMode{
     display: flex;

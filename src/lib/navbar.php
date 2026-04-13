@@ -19,13 +19,20 @@ catch (Exception $e) {
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Filters</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <?php foreach ($categories as $c) { ?>
-                        <li><a href="category.php?id=<?= $c->id ?>"><?= $c->name ?></a></li>
-                    <?php } ?>
 
-                    <?php foreach ($locations as $l) { ?>
-                        <li><a href="filterPage.php?id=<?= $l->id ?>"><?= $l->name ?></a></li>
-                    <?php } ?>
+                    <button class="subDropBtn"> Categories </button>
+                        <div class="subDropdown">
+                            <?php foreach ($categories as $c) { ?>
+                                <a href="category.php?id=<?= $c->id ?>"><?= $c->name ?></a>
+                            <?php } ?>
+                        </div>
+
+                    <button class="subDropBtn">Locations</button>
+                        <div class="subDropdown">
+                            <?php foreach ($locations as $l) { ?>
+                                <a href="location.php?id=<?= $l->id ?>"><?= $l->name ?></a>
+                            <?php } ?>
+                        </div>
                 </div>
         </div>
 

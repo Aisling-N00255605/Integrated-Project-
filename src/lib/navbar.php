@@ -36,6 +36,10 @@ catch (Exception $e) {
                 </div>
         </div>
 
+        <div class="width-12 titleOfPage">
+            <h1>The Post</h1>
+        </div>
+
         <div class="pageLinks">
                 <li><a href="index.php">Home</a></li>
             <?php foreach ($categories as $c) { ?>
@@ -45,7 +49,7 @@ catch (Exception $e) {
         </div>
     </ul>
 </div>
-<h1 class ="title">Name</h1>
+
 </div>
 </div>
 

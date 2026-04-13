@@ -83,6 +83,7 @@ p.author{
     font-family: "Jost", sans-serif;
     font-size: 20px;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .navbar input[type=text] {
@@ -96,14 +97,15 @@ p.author{
 .pageLinks{
     display: flex;
     gap: 60px;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     font-weight: 500;
 }
 
-.title h1{
+.titleOfPage h1{
+    display: flex;
     justify-content: center;
-    align-items: center;
+    font-family: "EB Garamond", serif;;
 }
 
 /* -------------NavBar dropdown------------- */
@@ -123,10 +125,10 @@ p.author{
   background-color: #818d80;
 }
 
-/* The container <div> - needed to position the dropdown content */
 .dropdown {
-  position: relative;
-  display: inline-block;
+  /* position: relative;
+  display: inline-block; */
+  justify-content: center;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -369,4 +371,14 @@ p.author{
     font-size: 14px;
     color: rgb(70, 69, 69);
     border-bottom: 3px solid #b2c9af;
+}
+
+.rsStories .mediumBox{
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.rsStories{
+    align-items: center;
 }

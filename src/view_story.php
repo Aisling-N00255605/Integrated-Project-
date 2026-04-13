@@ -55,19 +55,26 @@ catch (Exception $e) {
             </div>
         </div>
 
-        <div>
-            <h2>Related Stories</h2>
-            <?php foreach ($related_stories as $rs) { ?>
+        <div class="container rsStories">
+                <div class="width-8">
+                    <h4 class="genre">Related Stories</h4>
+                </div>
+
+                <?php foreach ($related_stories as $rs) { ?>
+                <div class="width-5 mediumBox">    
                 <?php if ($rs->id == $s->id) { continue; } ?>
                 <div>
-                    <h3><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline ?></a></h3>
-                    <?php $rs_author = Author::findById($rs->author_id); ?>
-                    <p>Author: <?= $rs_author->first_name . " " . $rs_author->last_name ?></p>
-                    <!-- <p>Category: <?= Category::findById($rs->category_id)->name ?></p> -->
-                    <!-- <p>Location: <?= Location::findById($rs->location_id)->name ?></p> -->
-                    <!-- <p>Date created: <?= $rs->created_at ?></p> -->
-                    <p>Last modified: <?= $rs->updated_at ?></p>
+                    <div class="imageBox"><img src="images/<?= $rs->img_url ?>" /></div> 
+                    <div class="text">
+                    <!-- author -->
+                        <?php $author = Author::findById($s->author_id); ?>
+                        <p class="author"><?= $author->first_name . " " . $author->last_name ?> <?= Category::findById($rs->category_id)->name ?></p>
+                    <!-- Heading -->
+                        <h2><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline?></a></h2>
+                    <!-- pargraph -->
+                        <p><?= $rs->subheadline ?></p>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </body>

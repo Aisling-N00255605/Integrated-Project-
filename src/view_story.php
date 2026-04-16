@@ -55,13 +55,13 @@ catch (Exception $e) {
             </div>
         </div>
 
-<div class="container width-12">
-    <div class="rsStories">
+<div class="container">
+    <div class="rsStories width-6">
         <h4 class="genre">Related Stories</h4>
 
-        <div class="rsMediumbox">
+        <div class="rsSmallBox">
         <?php foreach ($related_stories as $s) { ?>
-    <div class="width-4 mediumBox">
+    <div class="smallBox width-2">
         <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
         <div class="text">
         <!-- author -->
@@ -73,7 +73,7 @@ catch (Exception $e) {
     </div>
     <?php } ?>
 </div>
-    </div>
+</div>
 </div>
 
 

@@ -409,19 +409,8 @@ p.author{
     align-items: center;
 }
 
-.rsMediumbox{
-    display: flex;
+.rsSmallBox{
     gap: 40px;
-}
-
-
-
-/* .rsStories .mediumBox{
     display: flex;
-    gap: 25px;
     justify-content: center;
 }
-
-.rsStories{
-    align-items: center;
-} */

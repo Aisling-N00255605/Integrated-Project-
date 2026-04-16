@@ -55,27 +55,28 @@ catch (Exception $e) {
             </div>
         </div>
 
-        <div class="container rsStories">
-                <div class="width-8">
-                    <h4 class="genre">Related Stories</h4>
-                </div>
+<div class="container width-12">
+    <div class="rsStories">
+        <h4 class="genre">Related Stories</h4>
 
-                <?php foreach ($related_stories as $rs) { ?>
-                <div class="width-5 mediumBox">    
-                <?php if ($rs->id == $s->id) { continue; } ?>
-                <div>
-                    <div class="imageBox"><img src="images/<?= $rs->img_url ?>" /></div> 
-                    <div class="text">
-                    <!-- author -->
-                        <?php $author = Author::findById($s->author_id); ?>
-                        <p class="author"><?= $author->first_name . " " . $author->last_name ?> <?= Category::findById($rs->category_id)->name ?></p>
-                    <!-- Heading -->
-                        <h2><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline?></a></h2>
-                    <!-- pargraph -->
-                        <p><?= $rs->subheadline ?></p>
-                </div>
-            </div>
-            <?php } ?>
+        <div class="rsMediumbox">
+        <?php foreach ($related_stories as $s) { ?>
+    <div class="width-4 mediumBox">
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
+        <div class="text">
+        <!-- author -->
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?> <?= Category::findById($s->category_id)->name ?></p>
+        <!-- Heading -->
+            <h2><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
         </div>
+    </div>
+    <?php } ?>
+</div>
+    </div>
+</div>
+
+
+<?php require_once "./lib/footer.php"; ?>
     </body>
 </html>

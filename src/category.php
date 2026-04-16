@@ -53,5 +53,7 @@ catch (Exception $e) {
     </div>
     <?php } ?>
 </div>
+
+<?php require_once "./lib/footer.php"; ?>
     </body>
 </html>

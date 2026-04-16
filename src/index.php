@@ -21,6 +21,13 @@ try {
     
     $naturecategoryId = 3;
     $Nature = Story::findByCategory($naturecategoryId, $options = array('limit' => 4, 'offset' => 2));
+
+    $topculturecategoryId = 4;
+    $Topulture = Story::findByCategory($topculturecategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $culturecategoryId = 4;
+    $Culture = Story::findByCategory($culturecategoryId, $options = array('limit' => 4, 'offset' => 2));
+    
     }
 catch (Exception $e) {
     echo $e->getMessage();
@@ -196,8 +203,54 @@ catch (Exception $e) {
     
     </div>
 </div>
+
+
 </div>
 <!-- ~~~~~~~~~~~~~~~~End of Nature~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~Culture~~~~~~~~~~~~~~~~ -->
+<div class="container">
+<div class="width-12">
+        <h4 class="genre">Culture</h4>
+    </div>
+
+<!-- -------------Extra Large Story------------- -->
+    
+        <?php foreach ($Topulture as $s) { ?>
+   <div class="width-8 exLargeBox">
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h1><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
+    </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+ <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+<div class="smallBox">
+   
+ <?php foreach ($Culture as $s) { ?>
+    <div class="story">
+        <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+        </div>
+    </div>
+  <?php } ?>
+ </div>  
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~End of Culture~~~~~~~~~~~~~~~~ -->
+
+
+<?php require_once "./lib/footer.php"; ?>
 
 
 

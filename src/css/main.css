@@ -167,6 +167,36 @@ p.author{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+/* -------------Footer------------- */
+.footerBackground{
+    background-color: #c0c7bf;
+    margin-bottom: 30px;
+}
+
+.footerInfo{
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    font-family: "EB Garamond", serif;
+}
+
+.footerInfo h3{
+    font-weight: 600;
+}
+
+.linksFooter{
+    display: flex;
+    flex-direction: column;
+}
+
+.legalFooter ul:hover{
+    text-decoration: underline;
+}
+
+.linksFooter a:hover{
+    text-decoration: underline;
+}
+
 /* -------------locations filter------------- */
 
 .toplocation{
@@ -373,7 +403,20 @@ p.author{
     border-bottom: 3px solid #b2c9af;
 }
 
-.rsStories .mediumBox{
+.rsStories{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rsMediumbox{
+    display: flex;
+    gap: 40px;
+}
+
+
+
+/* .rsStories .mediumBox{
     display: flex;
     gap: 25px;
     justify-content: center;
@@ -381,4 +424,4 @@ p.author{
 
 .rsStories{
     align-items: center;
-}
+} */

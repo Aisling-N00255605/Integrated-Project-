@@ -16,8 +16,10 @@ catch (Exception $e) {
 <div class="width-12">
     <ul class="footer">
 
-        <div class="footerInfo">
-        <div class="legalFooter">
+<div class="footerInfo">
+<div class="footerText">
+    
+    <div class="legalFooter">
             <h3>Legal</h3>
             <ul>Terms of use</ul>
             <ul>Privacy Policy</ul>
@@ -40,11 +42,13 @@ catch (Exception $e) {
             <?php } ?>
         </div>
 
+    </div>
+
         <div class="titleFooter">
             <h1>Admin</h1>
         </div>
 
-        </div>
+</div>
 
         
     </ul>

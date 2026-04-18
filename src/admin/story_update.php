@@ -1,7 +1,7 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once '../lib/config.php';
+require_once '../lib/global.php';
+require_once '../lib/session.php';
 
 startSession();
 
@@ -73,7 +73,7 @@ try {
 
     $story->save();
     setFlashMessage('success', 'Story edited successfully!');
-    redirect('view_story.php?id=' . $story->id);
+    redirect('/admin/view_storyadmin.php?id=' . $story->id);
     // clearFormData();
     // clearFormErrors();
 
@@ -91,9 +91,9 @@ try {
     setFormErrors($errors);
 
     if (isset($data['id']) && $data['id']) {
-        redirect('story_edit.php?id=' . $data['id']);
+        redirect('/admin/story_edit.php?id=' . $data['id']);
     }
     else {
-        redirect('index.php');
+        redirect('/admin/story_create.php');
     }
 }

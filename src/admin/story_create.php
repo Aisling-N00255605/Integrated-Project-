@@ -1,7 +1,7 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once '../lib/config.php';
+require_once '../lib/global.php';
+require_once '../lib/session.php';
 
 startSession();
 
@@ -21,10 +21,10 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/main.css">
 
     <title>Create Story</title>
 </head>
@@ -45,12 +45,12 @@ try {
 
 
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-    <?php require_once "./lib/flash_message.php"; ?>
+    <?php require_once "../lib/navbar_admin.php"; ?>
+    <?php require_once "../lib/flash_message.php"; ?>
 
     <form action="story_store.php" method="POST" enctype="multipart/form-data">
     <!-- -------------Headline------------- -->
-    <div class="container">
+    <div class="container createStory">
     <div class="width-6">
         <h1>Create Story</h1>
         <div class="input">
@@ -151,10 +151,10 @@ try {
         <!-- -------------Button------------- -->
         <button type="submit">Create Story</button>
         </div>
-        </div>
+</div>
     </form>
 
-<?php require_once "./lib/footer.php"; ?>
+<?php require_once "../lib/footer_admin.php"; ?>
 </body>
 </html>
 <?php

@@ -46,22 +46,17 @@ catch (Exception $e) {
                     <p class="author">By <?= $author->first_name . " " . $author->last_name ?></p>
                     <p class="published">Published <?= $s->created_at ?></p>
                     <p><?= $s->article ?></p>
-
-                    <div class="actions">
-                        <li><a href="story_edit.php?id=<?= $s->id ?>">Edit</a></li>
-                        <li><a href="story_delete.php?id=<?= $s->id ?>">Delete</a></li>
-                    </div>
                 </div>
             </div>
         </div>
 
 <div class="container">
-    <div class="rsStories width-6">
+    <div class="rsStories width-7">
         <h4 class="genre">Related Stories</h4>
 
         <div class="rsSmallBox">
         <?php foreach ($related_stories as $s) { ?>
-    <div class="smallBox width-2">
+    <div class="relatedStories">
         <div class="imageBox"><img src="images/<?= $s->img_url ?>" /></div> 
         <div class="text">
         <!-- author -->

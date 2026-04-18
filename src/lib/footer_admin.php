@@ -16,9 +16,7 @@ catch (Exception $e) {
 <div class="width-12">
     <ul class="footer">
 
-<div class="footerInfo">
-    <div class="footerText">
-        
+        <div class="footerInfo">
         <div class="legalFooter">
             <h3>Legal</h3>
             <ul>Terms of use</ul>
@@ -31,24 +29,22 @@ catch (Exception $e) {
         <div class="linksFooter">
             <h3>Region</h3>
             <?php foreach ($locations as $l) { ?>
-                <a href="location.php?id=<?= $l->id ?>"><?= $l->name ?></a>
+                <a href="/admin/locationadmin.php?id=<?= $l->id ?>"><?= $l->name ?></a>
             <?php } ?>
         </div>
 
          <div class="linksFooter">
             <h3>Categories</h3>
             <?php foreach ($categories as $c) { ?>
-                <a href="category.php?id=<?= $c->id ?>"><?= $c->name ?></a>
+                <a href="/admin/categoryadmin.php?id=<?= $c->id ?>"><?= $c->name ?></a>
             <?php } ?>
         </div>
 
-    </div>
-
         <div class="titleFooter">
-            <h1>The Post</h1>
+            <h1>Admin</h1>
         </div>
-    
-</div>
+
+        </div>
 
         
     </ul>

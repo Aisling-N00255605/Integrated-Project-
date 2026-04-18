@@ -110,61 +110,51 @@ p.author{
 
 /* -------------NavBar dropdown------------- */
 
-/* Dropdown Button */
 .dropbtn {
   background-color: #a6b6a4;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
-  cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
   background-color: #818d80;
 }
 
 .dropdown {
-  /* position: relative;
-  display: inline-block; */
   justify-content: center;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #a6b6a4;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 25px 10px;
 }
 
 .subDropBtn{
-     background-color: #a6b6a4;
   color: white;
+  background-color: #a6b6a4;
   padding: 16px;
   font-size: 16px;
   border: none;
-  cursor: pointer;
 }
 
 .subDropBtn:hover {
   background-color: #cfd9cc;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+  /* display: block; */
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #b2c9af}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
 /* -------------Footer------------- */
@@ -176,8 +166,18 @@ p.author{
 .footerInfo{
     display: flex;
     padding: 30px;
-    justify-content: space-between;
     font-family: "EB Garamond", serif;
+}
+
+.footerText{
+    display: flex;
+    gap: 40px;
+    justify-content: left;
+}
+
+.titleFooter{
+    text-align: right;
+    margin-left: auto;
 }
 
 .footerInfo h3{
@@ -229,6 +229,11 @@ p.author{
     text-transform: uppercase;
 }
 
+/* -------------Admin------------- */
+.createStory{
+    padding: 30px;
+}
+
 /* -------------Images------------- */
 .imageBox img{
     width: 100%; 
@@ -268,11 +273,6 @@ p.author{
     height:100%;
 } */
 
-/* -------------Banner------------- */
-
-
-/* -------------Extra Large Box------------- */
-
 
 /* -------------Small Story------------- */
 .smallBox p.author{
@@ -281,7 +281,7 @@ p.author{
 
 .smallBox h3{
     margin-bottom: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .smallBox {
@@ -293,7 +293,7 @@ p.author{
 /* -------------Medium Story------------- */
 
 .mediumBox h2{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .mediumBox p{
@@ -332,7 +332,7 @@ p.author{
 }
 
 .slideshow h3{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-align: center;
 }
 
@@ -379,8 +379,10 @@ p.author{
     text-align: center;
     padding: 0px 5px 0px 5px;
 }
-.viewImg{
-    margin-bottom: 0px;
+.viewImg img{
+    width: 100%;     
+    height: auto;  
+    display: block;
 }
 
 .shortHeadline{
@@ -403,14 +405,26 @@ p.author{
     border-bottom: 3px solid #b2c9af;
 }
 
-.rsStories{
+/* -------------Related Stories------------- */
+.rsStories {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
-.rsSmallBox{
-    gap: 40px;
+.rsSmallBox {
     display: flex;
+    gap: 30px;
     justify-content: center;
+}
+
+.relatedStories {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.relatedStories .imageBox {
+    height: 120px;
 }

@@ -1,7 +1,7 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once '../lib/config.php';
+require_once '../lib/global.php';
+require_once '../lib/session.php';
 
 startSession();
 
@@ -60,16 +60,16 @@ if (!$story) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/main.css">
 
     <title>Edit Story</title>
 </head>
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-    <?php require_once "./lib/flash_message.php"; ?>
+    <?php require_once "../lib/navbar_admin.php"; ?>
+    <?php require_once "../lib/flash_message.php"; ?>
 
     <form action="story_update.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $story->id ?>">
@@ -176,11 +176,13 @@ if (!$story) {
         <!-- -------------Button------------- -->
          <div class="input">
          <button class="button" type="submit">Update Story</button>
-        <div class="button"><a href="index.php">Cancel</a></div>
+        <div class="button"><a href="/index.php">Cancel</a></div>
         </div>
 </div>
 </div>
     </form>
+
+    <?php require_once "../lib/footer_admin.php"; ?>
 </body>
 </html>
 <?php

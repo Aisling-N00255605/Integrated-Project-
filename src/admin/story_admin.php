@@ -1,0 +1,291 @@
+<?php
+require_once "../lib/config.php";
+try {
+    $top = Story::findAll($options = array('limit' => 1, 'offset' => 1, 'order_by' => 'created_at', 'order'=> 'DESC' ));
+    $trending = Story::findAll($options = array('limit' => 4, 'offset' => 4));
+    
+    $wildLifecategoryId = 1;
+    $WildLife = Story::findByCategory($wildLifecategoryId, $options = array('limit' => 4, 'order_by' => 'created_at', 'order'=> 'DESC' ));
+   
+    $tophistorycategoryId = 2;
+    $TopHistory = Story::findByCategory($tophistorycategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $historycategoryId = 2;
+    $History = Story::findByCategory($historycategoryId, $options = array('limit' => 4, 'offset' => 2));
+    
+    $NatureBannerId = 3;
+    $NatureBanner = Story::findByCategory($NatureBannerId, $options = array('limit' => 4));
+    
+    $topnaturecategoryId = 3;
+    $TopNature = Story::findByCategory($topnaturecategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $naturecategoryId = 3;
+    $Nature = Story::findByCategory($naturecategoryId, $options = array('limit' => 4, 'offset' => 2));
+
+    $topculturecategoryId = 4;
+    $Topulture = Story::findByCategory($topculturecategoryId, $options = array('limit' => 1, 'offset' => 1));
+    
+    $culturecategoryId = 4;
+    $Culture = Story::findByCategory($culturecategoryId, $options = array('limit' => 4, 'offset' => 2));
+    
+    }
+catch (Exception $e) {
+    echo $e->getMessage();
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Jost Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Jost Font -->
+
+    <!-- Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Space Mono -->
+
+    <!-- EB Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+     <!-- EB Garamond -->
+
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+
+
+    <title>Newspaper</title>
+</head>
+
+<body>
+
+        <?php require_once "../lib/navbar_admin.php"; ?>
+        <?php require_once "../lib/flash_message.php"; ?>
+       
+<div>
+<div class="container">
+<!-- -------------Extra Large Story------------- -->
+    
+        <?php foreach ($top as $s) { ?>
+   <div class="width-8 exLargeBox">
+        <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h1><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
+        <div class="adminMode">
+            <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+            <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+        </div>
+    </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+ <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+<div class="smallBox">
+   
+ <?php foreach ($trending as $s) { ?>
+    <div class="story">
+        <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+        </div>
+        <div class="smallAdminMode">
+            <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+            <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+        </div>
+    </div>
+  <?php } ?>
+ </div>  
+</div>
+</div>
+
+<!-- -------------Medium Story------------- -->
+<div class="container">
+<div class="width-12">
+        <h4 class="genre">Wildlife</h4>
+    </div>
+
+    <?php foreach ($WildLife as $s) { ?>
+    <div class="width-3 mediumBox">        
+        <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div> 
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h2><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
+            <p><?= $s->subheadline ?></p>
+        </div>
+        <div class="adminMode">
+            <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+            <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+        </div>
+    </div>
+    <?php } ?>
+</div>
+</div> 
+
+<!-- ~~~~~~~~~~~~~~~~History~~~~~~~~~~~~~~~~ -->
+<div class="blackBackground">
+<div class="container darkModeSection">
+
+    <div class="width-12">
+        <h4 class="genre">History</h4>
+    </div>
+<!-- -------------Extra Large Story------------- -->
+    
+    <?php foreach ($TopHistory as $s) { ?>
+        <div class="width-8 exLargeBox">
+                <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+                <div class="text">
+                    <?php $author = Author::findById($s->author_id); ?>
+                    <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+                    <h1><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+                </div>
+                <div class="adminMode">
+                    <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+                    <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+                </div>
+        </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+    <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+    <div class="smallBox">
+   
+    <?php foreach ($History as $s) { ?>
+        <div class="story">
+            <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+            <div class="text">
+                <?php $author = Author::findById($s->author_id); ?>
+                <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+                <h3><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+            </div>
+            <div class="smallAdminMode">
+                <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+                <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+            </div>
+        </div>
+    <?php } ?>
+    </div>  
+    </div>
+
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~End of History~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~Nature~~~~~~~~~~~~~~~~ -->
+<div class="blackBackground">
+<div class="container darkModeSection">
+
+    <div class="width-12">
+        <h4 class="genre">Nature</h4>
+
+        <div class="slideshow">
+        <?php foreach ($NatureBanner as $s) { ?>
+            <span class="dot"></span>
+            <div class="mySlides">
+                <div class="slidesImages">
+                    <img src="../images/<?= $s->img_url ?>" />
+                </div>
+                
+                <div class="text">
+                    
+                    <h3><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+                </div>
+                <div class="adminMode">
+                    <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+                    <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+                </div>
+            </div> 
+        <?php } ?>
+        </div>
+
+        <script src="/admin/indexadmin.js"></script>
+    
+    </div>
+</div>
+
+
+</div>
+<!-- ~~~~~~~~~~~~~~~~End of Nature~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~Culture~~~~~~~~~~~~~~~~ -->
+<div class="container">
+<div class="width-12">
+        <h4 class="genre">Culture</h4>
+    </div>
+
+<!-- -------------Extra Large Story------------- -->
+    
+        <?php foreach ($Topulture as $s) { ?>
+   <div class="width-8 exLargeBox">
+        <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h1><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h1>
+        </div>
+        <div class="adminMode">
+            <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+            <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+        </div>
+    </div>
+  <?php } ?>
+   
+
+<!-- -------------Small Story------------- -->
+ <div class="width-4">
+        <h4 class="title">Trending</h4>
+
+<div class="smallBox">
+   
+ <?php foreach ($Culture as $s) { ?>
+    <div class="story">
+        <div class="imageBox"><img src="../images/<?= $s->img_url ?>" /></div>
+        <div class="text">
+            <?php $author = Author::findById($s->author_id); ?>
+            <p class="author"><?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h3>
+        </div>
+        <div class="smallAdminMode">
+            <li><a href="/admin/story_edit.php?id=<?= $s->id ?>">Edit</a></li>
+            <li><a href="/admin/story_delete.php?id=<?= $s->id ?>">Delete</a></li>
+        </div>
+    </div>
+  <?php } ?>
+ </div>  
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~End of Culture~~~~~~~~~~~~~~~~ -->
+
+
+<?php require_once "../lib/footer_admin.php"; ?>
+
+
+
+</body>
+
+</html>   

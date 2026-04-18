@@ -1,7 +1,7 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once '../lib/config.php';
+require_once '../lib/global.php';
+require_once '../lib/session.php';
 
 
 startSession();
@@ -45,7 +45,7 @@ try {
     clearFormData();
     clearFormErrors();
     setFlashMessage('success', 'Article deleted successfully.');
-    redirect('index.php');
+    redirect('/index.php');
 }
 
 catch (Exception $e) {
@@ -55,9 +55,9 @@ catch (Exception $e) {
     setFormErrors($errors);
 
     if (isset($data['id']) && $data['id']) {
-        redirect('view-story.php?id=' . $data['id']);
+        redirect('/admin/view_storyadmin.php?id=' . $data['id']);
     }
     else {
-        redirect('index.php');
+        redirect('/index.php');
     }
 }

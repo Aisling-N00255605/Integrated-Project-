@@ -1,7 +1,7 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once '../lib/config.php';
+require_once '../lib/global.php';
+require_once '../lib/session.php';
 
 startSession();
 
@@ -101,12 +101,12 @@ try {
     clearFormErrors();
 
     setFlashMessage('success', 'Story created successfully!');
-    redirect('view_story.php?id=' . $story->id);
+    redirect('/admin/view_storyadmin.php?id=' . $story->id);
 
 } catch (Exception $e) {
     setFormErrors($errors);
     setFormData($data);
     setFlashMessage('error', 'Error: ' . $e->getMessage());
 
-    redirect('story_create.php');
+    redirect('/admin/story_create.php');
 }

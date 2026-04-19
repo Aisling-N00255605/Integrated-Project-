@@ -50,7 +50,7 @@ catch (Exception $e) {
                 <p class="locationfilter"><?= Location::findById($s->location_id)->name ?></p>
             </div>
         <!-- Heading -->
-            <h2><a href="/admin/view_story.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
+            <h2><a href="/admin/view_storyadmin.php?id=<?= $s->id ?>"><?= $s->headline?></a></h2>
         <!-- pargraph -->
             <p><?= $s->subheadline ?></p>
         </div>
